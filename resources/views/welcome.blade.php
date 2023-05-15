@@ -71,7 +71,7 @@
            function load_data()
            {
 
-              var action_url = "{!!  route('fabricator.data') !!} ";
+              var action_url = "{!!  route('users.data') !!} ";
 
                $('#UserTable').DataTable({
                    processing: true,
