@@ -34,7 +34,7 @@
              
                 </tr>
               </thead>
-              <tbody id="fabricatorTable">
+              <tbody>
                
               </tbody>
             </table>
