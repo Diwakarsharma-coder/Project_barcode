@@ -9,11 +9,11 @@
 </style>
  <div class="container">
         <h2>Registration Form</h2>
-         @if ($message = Session::get('success'))
+        {{--  @if ($message = Session::get('success'))
                         <div class="alert alert-success" role="alert">
                             <span>{{ $message }}</span>
                         </div>
-                    @endif
+                    @endif --}}
                     
                     <p id="allError"></p>
 
@@ -41,6 +41,7 @@
                 <label for="email">Email*</label>
                 <input type="email" class="form-control" id="email"  value="{{ old('email') }}" name="email" placeholder="Enter Email">
                 <span></span>
+                <span id="emailError" class="error"></span>
                  @if ($errors->has('email'))
                         <div class="error" id="email_error">{{ $errors->first('email') }}</div>
                 @endif
@@ -152,7 +153,17 @@
                             window.location = "{{  route('editProfile') }}";
                         }
                     
-                   }
+                   },
+                    error: function(data) {
+                        var errors = data.responseJSON; // An array with all errors.
+
+                        // console.log(errors.message)
+                        // $('#emailError').text(errors.message);
+
+                        $.each(data.responseJSON.errors,function(field_name,error){
+                            $(document).find('[name='+field_name+']').after('<span class="text-strong error">' +error+ '</span>')
+                        })
+                    }
 
                 }); 
     

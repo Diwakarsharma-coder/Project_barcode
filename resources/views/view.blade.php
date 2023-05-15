@@ -31,8 +31,12 @@
            
             
             <div class="form-group">
-                                 
-                        <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/'.$data->image) }}">
+                @if($data->image != "")
+                    <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/'.$data->image) }}">
+                @else
+
+                    <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/download.png') }}">
+                @endif
                    
                    
             </div>

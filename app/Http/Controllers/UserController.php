@@ -8,6 +8,7 @@ use Session;
 use App\Models\User;
 use Hash;
 use Illuminate\Validation\Rule;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -225,4 +226,46 @@ class UserController extends Controller
   
         return Redirect('/');
     }
+
+
+     public function anyData(Request $request)
+    {
+        
+
+        $data = User::where('status', '!=', '2')->orderBy('id', 'desc')->get();
+        // dd($data);
+
+        return Datatables::of($data)
+           ->addColumn('first_name', function ($data) {
+                return $data->first_name;
+            })->addColumn('last_name', function ($data) {
+                return $data->last_name;
+            })->addColumn('email', function ($data) {
+                return $data->email;
+            })->addColumn('image', function ($data) {
+                
+                if($data->image != ""){
+                            $imageName = asset('uploads/'.$data->image) ;
+                          $x=   '<img width="80px" height="80px" src="'. $imageName.'">';
+                        }else{
+                            $imageName =  asset('uploads/download.png');
+                            $x = '<img width="80px" height="80px" src="'. $imageName .'">';
+                        }
+                
+                
+                return $x;
+            })
+            ->addColumn('action', function ($data) {
+                // route('banner.edit',['id'=>$data->id])
+                $fabricatorShow = route('view', ['id' => $data->id]);
+                
+                $x = '<a href="' . $fabricatorShow . '"  class="btn btn-sm btn-clean btn-icon" title="View Details"> <i class="fas fa-eye"></i> </a>
+                                ';
+                return $x;
+            })
+           
+            ->rawColumns([ 'action', 'first_name', 'last_name','image', 'email'])
+            ->make(true);
+    }
+
 }

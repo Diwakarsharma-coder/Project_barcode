@@ -9,11 +9,11 @@
 </style>
  <div class="container">
         <h2>Registration Form</h2>
-         @if ($message = Session::get('success'))
+         {{-- @if ($message = Session::get('success'))
                         <div class="alert alert-success" role="alert">
                             <span>{{ $message }}</span>
                         </div>
-                    @endif
+                    @endif --}}
                     
                     
         <form method="post"   id="registerForm" enctype="multipart/form-data">
@@ -57,7 +57,12 @@
             </div>
             <div class="form-group">
                         <input type="hidden" name="old_image" value="{{ $data->image }}">        
-                        <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/'.$data->image) }}">
+                        @if($data->image != "")
+                            <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/'.$data->image) }}">
+                        @else
+
+                            <img width="200px" style="border: 1px solid #ccc; margin: 5px" height="200px" src="{{ asset('uploads/download.png') }}">
+                        @endif
                    
                    
             </div>

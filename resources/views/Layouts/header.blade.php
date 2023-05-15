@@ -25,7 +25,8 @@
 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('editProfile') }}">Edit Profile</a>
-          </li>
+          {{--   <a class="nav-link" href="{{ route('edit', ['id'=>Auth::user()->id]) }}">Edit Profile</a>
+          </li> --}}
 
          @endguest
       </ul>

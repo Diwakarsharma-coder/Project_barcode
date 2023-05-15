@@ -10,11 +10,12 @@
 
  <div class="container">
         <h2>Login Form</h2>
-            @if ($message = Session::get('success'))
+           
+            {{-- @if ($message = Session::get('success'))
                 <div class="alert alert-success" role="alert">
                     <span>{{ $message }}</span>
                 </div>
-            @endif
+            @endif --}}
                     
                     <div id="loginError">
                         

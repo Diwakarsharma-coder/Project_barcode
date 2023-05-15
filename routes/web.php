@@ -30,6 +30,7 @@ Route::get('/login',[UserController::class,'login'])->name('login');
 
 Route::post('datalogn',[UserController::class,'datalogin'])->name('Datalogin');
 
+Route::post('fabricator/data', [UserController::class, 'anyData'])->name('fabricator.data');
 
 });
 

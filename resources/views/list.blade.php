@@ -8,11 +8,11 @@
 <div class="container"> 
     <div class="row">
         <div class="col-lg-12 col-md-6 col-sm-4">
-             @if ($message = Session::get('success'))
+             {{-- @if ($message = Session::get('success'))
                         <div class="alert alert-success" role="alert">
                             <span>{{ $message }}</span>
                         </div>
-                    @endif
+                    @endif --}}
                     
             <table class="table" id="UserTable">
               <thead>
